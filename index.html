@@ -3,103 +3,179 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shukurullo — rezyume</title>
-<meta name="description" content="Shukurullo:  matematika registan">
+<title>Shukurullo — kiberxavfsizlik</title>
+<meta name="description" content="Shukurullo: kiberxavfsizlik o'rganuvchi va CTF masalalari muallifi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --paper:#f4f7f5; --grid:#d5e3ea; --ink:#14233a; --soft:#4a5b72; --pen:#c8372d; --card:#ffffff;
-}
-@media (prefers-color-scheme:dark){
-  :root{--paper:#0f1a24; --grid:#1d2f3d; --ink:#e8eef4; --soft:#9fb0c2; --pen:#ff6b5e; --card:#15232f;}
-}
+:root{--bg:#0a0e1f;--panel:#111833;--line:#25305c;--text:#dfe6ff;--mute:#8d99c7;--cy:#5ce1e6;--am:#ffb454;--rd:#ff5c7a}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0; font-family:"Bricolage Grotesque",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  color:var(--ink); background-color:var(--paper); line-height:1.6;
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:28px 28px;
-}
-main{max-width:760px; margin:0 auto; padding:72px 24px 40px}
-h1{font-size:clamp(3rem,11vw,6rem); line-height:.95; margin:0 0 20px; font-weight:800; letter-spacing:-.03em}
-h1 span{display:inline-block; border-bottom:6px solid var(--pen)}
-.lead{font-size:1.25rem; max-width:34ch; margin:0 0 28px}
-.links{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:64px}
-a{color:inherit}
-.btn{padding:10px 18px; border:2px solid var(--ink); border-radius:6px; text-decoration:none; font-weight:600; background:var(--card)}
-.btn:hover,.btn:focus-visible{background:var(--ink); color:var(--paper)}
-:focus-visible{outline:3px solid var(--pen); outline-offset:3px}
-section{margin-bottom:56px}
-h2{font-size:1.6rem; margin:0 0 16px; font-weight:800}
-.box{background:var(--card); border:2px solid var(--ink); border-radius:6px; padding:20px 22px}
-.box + .box{margin-top:14px}
-.box h3{margin:0 0 4px; font-size:1.1rem}
-.box p{margin:0; color:var(--soft)}
-.skills{display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; list-style:none}
-.skills li{background:var(--card); border:2px solid var(--ink); border-radius:999px; padding:4px 14px; font-weight:600}
-.flag{font-family:ui-monospace,Consolas,monospace; color:var(--pen); word-break:break-all}
-footer{max-width:760px; margin:0 auto; padding:0 24px 56px; color:var(--soft); font-size:.95rem}
-@media (prefers-reduced-motion:no-preference){
-  h1 span{animation:u .9s ease-out both}
-  @keyframes u{from{border-bottom-color:transparent}}
-}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.65;
+  background-image:radial-gradient(circle at 80% -10%,#1b2a6b55,transparent 45%)}
+a{color:var(--cy)}
+:focus-visible{outline:3px solid var(--am);outline-offset:3px}
+.mono{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace}
+nav{position:sticky;top:0;z-index:5;background:#0a0e1fe6;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav div{max-width:960px;margin:0 auto;padding:12px 24px;display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+nav b{margin-right:auto;color:var(--cy)}
+nav a{color:var(--mute);text-decoration:none;font-size:.95rem}
+nav a:hover{color:var(--text)}
+main,footer{max-width:960px;margin:0 auto;padding:0 24px}
+.hero{padding:72px 0 56px}
+.term{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.bar{display:flex;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.bar i{width:11px;height:11px;border-radius:50%;background:var(--line)}
+.bar i:first-child{background:var(--rd)}.bar i:nth-child(2){background:var(--am)}.bar i:nth-child(3){background:var(--cy)}
+.term pre{margin:0;padding:22px;font-size:clamp(.85rem,2.6vw,1.05rem);white-space:pre-wrap;min-height:230px;line-height:1.8}
+.p{color:var(--cy)}.k{color:var(--am)}
+.cur{display:inline-block;width:.6em;height:1.1em;background:var(--cy);vertical-align:-3px;animation:b 1s steps(2) infinite}
+@keyframes b{50%{opacity:0}}
+h1{font-size:clamp(2.6rem,9vw,5rem);line-height:1;margin:40px 0 14px;letter-spacing:-.03em}
+.lead{font-size:1.2rem;color:var(--mute);max-width:46ch;margin:0 0 26px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:10px 18px;border:1px solid var(--cy);border-radius:6px;text-decoration:none;font-weight:700;color:var(--cy)}
+.btn:hover{background:var(--cy);color:var(--bg)}
+.btn.f{background:var(--cy);color:var(--bg)}
+.btn.f:hover{background:transparent;color:var(--cy)}
+section{padding:48px 0;border-top:1px solid var(--line)}
+h2{font-size:1.7rem;margin:0 0 6px}
+h2::before{content:"# ";color:var(--cy);font-family:"JetBrains Mono",monospace}
+.sub{color:var(--mute);margin:0 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px}
+.card h3{margin:0 0 6px;font-size:1.1rem}
+.card p{margin:0;color:var(--mute);font-size:.97rem}
+.tag{display:inline-block;margin-top:12px;padding:2px 10px;border-radius:999px;font-size:.8rem;border:1px solid var(--am);color:var(--am)}
+.tag.ok{border-color:var(--cy);color:var(--cy)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 18px}
+.chips li{padding:4px 12px;border:1px solid var(--line);border-radius:6px;background:var(--panel);font-size:.92rem}
+.group{color:var(--mute);margin:18px 0 8px;font-weight:500}
+.steps{list-style:none;padding:0;margin:0;border-left:2px solid var(--line)}
+.steps li{position:relative;padding:0 0 22px 26px}
+.steps li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--am)}
+.steps li.d::before{background:var(--cy);border-color:var(--cy)}
+.steps b{display:block}.steps span{color:var(--mute)}
+.note{color:var(--mute);font-size:.9rem;margin-top:16px}
+footer{padding-bottom:56px;color:var(--mute);font-size:.92rem;border-top:1px solid var(--line);padding-top:24px}
+.flag{color:var(--rd)}
+@media (prefers-reduced-motion:reduce){.cur{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<nav><div>
+  <b class="mono">shukurullo@sec:~$</b>
+  <a href="#about">Haqida</a><a href="#skills">Ko'nikmalar</a><a href="#ctf">CTF</a><a href="#certs">Sertifikatlar</a><a href="#path">Yo'l</a><a href="#contact">Aloqa</a>
+</div></nav>
+
 <main>
-  <header>
-    <h1>Shuku&shy;rullo<br><span>o'qituvchi</span></h1>
-    <p class="lead">Abuturent matematika va sertifikat ga tayyorlayman </p>
-    <div class="links">
-      <a class="btn" href="https://github.com/Uzboy77">GitHub</a>
-      <a class="btn" href="mailto:email@example.com">Email</a>
-      <a class="btn" href="https://t.me/username">Telegram</a>
-    </div>
-  </header>
+<header class="hero">
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <pre class="mono" id="t" aria-label="whoami: Shukurullo, kiberxavfsizlik o'rganuvchi, CTF muallifi"></pre>
+  </div>
+  <h1>Shukurullo</h1>
+  <p class="lead">Kiberxavfsizlik o'rganuvchi va CTF masalalari muallifi. Linux, tarmoq va pentest bilan ishlayman.</p>
+  <div class="btns">
+    <a class="btn f" href="#ctf">CTF ishlarim</a>
+    <a class="btn" href="https://github.com/Uzboy77">GitHub</a>
+    <a class="btn" href="#contact">Bog'lanish</a>
+  </div>
+</header>
 
-  <section id="about">
-    <h2>Men haqimda</h2>
-    <div class="box">
-      <p>O'zbekistonda  matematika o'qituvchisiman. Bo'sh vaqtimda kiberxavfsizlik, Linux va tarmoqlarni mustaqil o'rganaman va o'rganganlarimni CTF masalalariga aylantiraman.</p>
-    </div>
-  </section>
+<section id="about">
+  <h2>Men haqimda</h2>
+  <p class="sub">O'zbekistondan. Mustaqil o'rganaman, o'rganganimni amaliyotda sinayman.</p>
+  <div class="card"><p>Kiberxavfsizlikni Linux, tarmoq asoslari va amaliy topshiriqlar orqali o'rganaman. Boshqalar ham o'rgansin deb ko'p bosqichli CTF masalalari yarataman va ularni o'zim sinab ko'raman.</p></div>
+</section>
 
-  <section id="work">
-    <h2>Ish tajribasi</h2>
-    <div class="box">
-      <h3>Matematika o'qituvchisi</h3>
-      <p>Boshlang'ich maktab · dars materiallari va test savollari tayyorlash.</p>
-    </div>
-    <div class="box">
-      <h3>CTF masalalari muallifi</h3>
-      <p>Ko'p bosqichli (level) kiberxavfsizlik topshiriqlarini ishlab chiqish.</p>
-    </div>
-  </section>
+<section id="skills">
+  <h2>Ko'nikmalar</h2>
+  <p class="sub">Har kuni ishlatadigan va o'rganayotgan vositalar.</p>
+  <p class="group">Tizimlar</p>
+  <ul class="chips"><li>Linux</li><li>Virtual mashinalar</li><li>Bash</li><li>PowerShell</li></ul>
+  <p class="group">Tarmoq</p>
+  <ul class="chips"><li>TCP/IP</li><li>DNS</li><li>HTTP</li><li>Nmap</li><li>Wireshark</li></ul>
+  <p class="group">Xavfsizlik</p>
+  <ul class="chips"><li>CTF</li><li>Pentest asoslari</li><li>Burp Suite</li><li>OWASP Top 10</li></ul>
+</section>
 
-  <section id="skills">
-    <h2>Ko'nikmalar</h2>
-    <ul class="skills">
-      <li>Kiberxavfsizlik</li>
-      <li>CTF</li>
-      <li>Linux</li>
-      <li>Tarmoqlar</li>
-      <li>PowerShell</li>
-      <li>Matematika o'qitish</li>
-    </ul>
-  </section>
+<section id="ctf">
+  <h2>CTF loyihalar</h2>
+  <p class="sub">O'zim yaratgan va ishlab chiqayotgan topshiriqlar.</p>
+  <div class="grid">
+    <div class="card"><h3>HAADY Training</h3><p>Ko'p darajali CTF o'quv masalalari: oddiydan murakkabga.</p><span class="tag ok">Faol</span></div>
+    <div class="card"><h3>Web</h3><p>Oddiy zaifliklarni topish va ishlatish topshiriqlari.</p><span class="tag">Rejada</span></div>
+    <div class="card"><h3>Linux</h3><p>Terminal, fayl huquqlari va skriptlar bo'yicha masalalar.</p><span class="tag">Rejada</span></div>
+    <div class="card"><h3>Network</h3><p>Trafik tahlili va tarmoq skanerlash masalalari.</p><span class="tag">Rejada</span></div>
+  </div>
+</section>
 
-  <section id="projects">
-    <h2>Loyihalar</h2>
-    <div class="box">
-      <h3>HAADY Training</h3>
-      <p>CTF masalalari va ko'p darajali o'quv topshiriqlari.</p>
-    </div>
-  </section>
+<section id="certs">
+  <h2>Sertifikatlar</h2>
+  <p class="sub">Olishni maqsad qilgan yo'nalishlar.</p>
+  <div class="grid">
+    <div class="card"><h3>CompTIA Security+</h3><p>Xavfsizlikning umumiy asoslari.</p><span class="tag">Maqsad</span></div>
+    <div class="card"><h3>CompTIA Network+</h3><p>Tarmoq asoslari.</p><span class="tag">Maqsad</span></div>
+    <div class="card"><h3>eJPT</h3><p>Boshlang'ich pentest sertifikati.</p><span class="tag">Maqsad</span></div>
+    <div class="card"><h3>Linux Essentials</h3><p>Linux asoslari (LPI).</p><span class="tag">Maqsad</span></div>
+  </div>
+  <p class="note">Olgan sertifikatingiz bo'lsa, "Maqsad" belgisini "Olingan" ga o'zgartiring.</p>
+</section>
+
+<section id="path">
+  <h2>O'qish yo'li</h2>
+  <p class="sub">Qayerdan boshlaganim va qayerga ketayotganim.</p>
+  <ul class="steps">
+    <li class="d"><b>Linux va virtual mashinalar</b><span>Muhit tayyorlash, terminal va skriptlar.</span></li>
+    <li class="d"><b>Tarmoq asoslari</b><span>Protokollar, portlar, trafik.</span></li>
+    <li class="d"><b>CTF masalalari yaratish</b><span>HAADY Training ustida ishlash.</span></li>
+    <li><b>Pentest amaliyoti</b><span>Hack The Box va TryHackMe laboratoriyalari.</span></li>
+    <li><b>Birinchi sertifikat</b><span>Security+ yoki eJPT.</span></li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Aloqa</h2>
+  <p class="sub">CTF, hamkorlik yoki savollar uchun yozing.</p>
+  <div class="btns">
+    <a class="btn f" href="mailto:email@example.com">email@example.com</a>
+    <a class="btn" href="https://t.me/username">Telegram</a>
+    <a class="btn" href="https://github.com/Uzboy77">GitHub</a>
+  </div>
+</section>
 </main>
+
 <footer>
-  <p>Yashirin topshiriq: sahifa kodini ko'ring. <span class="flag">flag{view_source_works}</span></p>
+  <p>Yashirin topshiriq: sahifa kodini ko'ring. <span class="flag mono">flag{view_source_works}</span></p>
 </footer>
+
+<script>
+(function(){
+  var el=document.getElementById('t');
+  var lines=[
+    ['$ whoami','shukurullo'],
+    ['$ cat role.txt','kiberxavfsizlik o\'rganuvchi, CTF muallifi'],
+    ['$ ls skills/','linux  networking  pentest  ctf'],
+    ['$ echo $STATUS','o\'rganish davom etmoqda']
+  ];
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function render(n,partial){
+    var h='';
+    for(var i=0;i<n;i++) h+='<span class="p">'+esc(lines[i][0])+'</span>\n<span class="k">'+esc(lines[i][1])+'</span>\n\n';
+    return h+partial;
+  }
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){el.innerHTML=render(lines.length,'');return;}
+  var li=0,ci=0;
+  (function tick(){
+    if(li>=lines.length){el.innerHTML=render(lines.length,'<span class="p">$ </span><span class="cur"></span>');return;}
+    var cmd=lines[li][0];
+    if(ci<=cmd.length){
+      el.innerHTML=render(li,'<span class="p">'+esc(cmd.slice(0,ci))+'</span><span class="cur"></span>');
+      ci++;setTimeout(tick,45);
+    }else{li++;ci=0;setTimeout(tick,350);}
+  })();
+})();
+</script>
 </body>
 </html>
