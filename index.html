@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shukurullo — rezyume</title>
+<meta name="description" content="Shukurullo:  matematika registan">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4f7f5; --grid:#d5e3ea; --ink:#14233a; --soft:#4a5b72; --pen:#c8372d; --card:#ffffff;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#0f1a24; --grid:#1d2f3d; --ink:#e8eef4; --soft:#9fb0c2; --pen:#ff6b5e; --card:#15232f;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:"Bricolage Grotesque",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--ink); background-color:var(--paper); line-height:1.6;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+main{max-width:760px; margin:0 auto; padding:72px 24px 40px}
+h1{font-size:clamp(3rem,11vw,6rem); line-height:.95; margin:0 0 20px; font-weight:800; letter-spacing:-.03em}
+h1 span{display:inline-block; border-bottom:6px solid var(--pen)}
+.lead{font-size:1.25rem; max-width:34ch; margin:0 0 28px}
+.links{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:64px}
+a{color:inherit}
+.btn{padding:10px 18px; border:2px solid var(--ink); border-radius:6px; text-decoration:none; font-weight:600; background:var(--card)}
+.btn:hover,.btn:focus-visible{background:var(--ink); color:var(--paper)}
+:focus-visible{outline:3px solid var(--pen); outline-offset:3px}
+section{margin-bottom:56px}
+h2{font-size:1.6rem; margin:0 0 16px; font-weight:800}
+.box{background:var(--card); border:2px solid var(--ink); border-radius:6px; padding:20px 22px}
+.box + .box{margin-top:14px}
+.box h3{margin:0 0 4px; font-size:1.1rem}
+.box p{margin:0; color:var(--soft)}
+.skills{display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; list-style:none}
+.skills li{background:var(--card); border:2px solid var(--ink); border-radius:999px; padding:4px 14px; font-weight:600}
+.flag{font-family:ui-monospace,Consolas,monospace; color:var(--pen); word-break:break-all}
+footer{max-width:760px; margin:0 auto; padding:0 24px 56px; color:var(--soft); font-size:.95rem}
+@media (prefers-reduced-motion:no-preference){
+  h1 span{animation:u .9s ease-out both}
+  @keyframes u{from{border-bottom-color:transparent}}
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Shuku&shy;rullo<br><span>o'qituvchi</span></h1>
+    <p class="lead">Abuturent matematika va sertifikat ga tayyorlayman </p>
+    <div class="links">
+      <a class="btn" href="https://github.com/Uzboy77">GitHub</a>
+      <a class="btn" href="mailto:email@example.com">Email</a>
+      <a class="btn" href="https://t.me/username">Telegram</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>Men haqimda</h2>
+    <div class="box">
+      <p>O'zbekistonda  matematika o'qituvchisiman. Bo'sh vaqtimda kiberxavfsizlik, Linux va tarmoqlarni mustaqil o'rganaman va o'rganganlarimni CTF masalalariga aylantiraman.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2>Ish tajribasi</h2>
+    <div class="box">
+      <h3>Matematika o'qituvchisi</h3>
+      <p>Boshlang'ich maktab · dars materiallari va test savollari tayyorlash.</p>
+    </div>
+    <div class="box">
+      <h3>CTF masalalari muallifi</h3>
+      <p>Ko'p bosqichli (level) kiberxavfsizlik topshiriqlarini ishlab chiqish.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Ko'nikmalar</h2>
+    <ul class="skills">
+      <li>Kiberxavfsizlik</li>
+      <li>CTF</li>
+      <li>Linux</li>
+      <li>Tarmoqlar</li>
+      <li>PowerShell</li>
+      <li>Matematika o'qitish</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Loyihalar</h2>
+    <div class="box">
+      <h3>HAADY Training</h3>
+      <p>CTF masalalari va ko'p darajali o'quv topshiriqlari.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>Yashirin topshiriq: sahifa kodini ko'ring. <span class="flag">flag{view_source_works}</span></p>
+</footer>
+</body>
+</html>
