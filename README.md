@@ -1,1 +1,1 @@
-# uzboy77.github.io
+shukurullo.github.io
